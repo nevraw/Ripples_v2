@@ -35,7 +35,7 @@
 			</label>
 		</div>
   		</fieldset>
-                <p></p>     
+                <br><br>     
 
 		<fieldset style="padding:6px">
 			<legend>Background ripples</legend>
@@ -46,15 +46,26 @@
 			</label>
 			</div>
 		</fieldset>
-                <p></p>     
+                <br><br>     
 
-	<fieldset style="padding:6px">
-		<a href="pebblejs://close" class="btn btn-lg btn-default" role="button">Cancel</a>
-			<button type="button" class="btn btn-lg btn-primary" id="b-submit">Save</button>
-	</fieldset>
-</form>
+		<fieldset style="padding:6px">
+			<legend>Time</legend>
+			<div class="radio">
+			<label>
+				<input type="radio" name="hour_12" value="on" checked>12-hour mode
+				<input type="radio" name="hour_12" value="off">24-hour mode
+			</label>
+		</div>
+  		</fieldset>
+                <br><br>     
 
-	</div><!-- container -->
+		<fieldset style="padding:6px">
+			<a href="pebblejs://close" class="btn btn-lg btn-default" role="button">Cancel</a>
+				<button type="button" class="btn btn-lg btn-primary" id="b-submit">Save</button>
+		</fieldset>
+	</form>
+
+</div><!-- container -->
 
 <!-- End Document
 ================================================== -->
@@ -71,7 +82,8 @@
 
 			var options = {
 				invert:		params.invert === 'on',
-				background:	params.background === 'on'
+				background:	params.background === 'on',
+				hour_12:	params.hour_12 === 'on'
 			}
 			return options;
 		}
@@ -84,6 +96,9 @@
 			}
 			if (opts && opts.background) {
 				$form.find('[name="background"]').prop('checked', true);
+			}
+			if (opts && opts.hour_12) {
+				$form.find('[name="hour_12"]').prop('checked', true);
 			}
 		}
 
