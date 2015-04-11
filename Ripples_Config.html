@@ -29,22 +29,22 @@
 	
 	<form id="config" role="form" class="input-lg">
 		<fieldset>
-			<legend>Colors:</legend>
+			<legend>Background Color:</legend>
 			<div class="radio">
 			<label>
-				<input type="radio" name="invert" value="on">White background
 				<input type="radio" name="invert" value="off" checked>Black background
+				<input type="radio" name="invert" value="on">White background
 			</label>
 		</div>
   		</fieldset>
                 <p> </p>     
 	
 		<fieldset>
-			<legend>Hide background:</legend>
-			<div class="checkbox">
+			<legend>Background ripples:</legend>
+			<div class="radio">
 			<label>
-				<input type="checkbox" name="background" value="on">
-						Remove background ripples 
+				<input type="radio" name="background" value="off">Show background ripples 
+				<input type="radio" name="background" value="on">Remove background ripples 
 			</label>
 			</div>
 		</fieldset>
@@ -123,4 +123,5 @@
 		applyOptions();
    </script>
 
-</body></html>
+</body>
+</html>
