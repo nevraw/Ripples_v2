@@ -52,8 +52,8 @@
 			<legend>Time</legend>
 			<div class="radio">
 			<label>
-				<input type="radio" name="hour_12" value="on" checked>12-hour mode
-				<input type="radio" name="hour_12" value="off">24-hour mode
+				<input type="radio" name="hour_24" value="off" checked>12-hour mode
+				<input type="radio" name="hour_24" value="on">24-hour mode
 			</label>
 		</div>
   		</fieldset>
@@ -83,7 +83,7 @@
 			var options = {
 				invert:		params.invert === 'on',
 				background:	params.background === 'on',
-				hour_12:	params.hour_12 === 'on'
+				hour_24:	params.hour_24 === 'on'
 			}
 			return options;
 		}
