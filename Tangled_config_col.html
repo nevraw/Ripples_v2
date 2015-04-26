@@ -31,8 +31,8 @@
 			<legend>Time</legend>
 			<div class="radio">
 			<label>
-				<input type="radio" name="hour_12" value="off" checked>24-hour mode
-				<input type="radio" name="hour_12" value="on">12-hour mode
+				<input type="radio" name="hour_24" value="off" checked>12-hour mode
+				<input type="radio" name="hour_24" value="on">24-hour mode
 			</label>
 		</div>
   		</fieldset>
@@ -69,7 +69,7 @@
 			});
 
 			var options = {
-				hour_12:	params.hour_12 === 'on',
+				hour_24:	params.hour_24 === 'on',
 				skin_tone:	params.num_color === 'on'
 			}
 			return options;
@@ -78,8 +78,8 @@
 		function applyOptions() {
 			var $form	= $('#config');
 			var opts	= JSON.parse(getParam('options'));
-			if (opts && opts.hour_12) {
-				$form.find('[name="hour_12"]').prop('checked', true);
+			if (opts && opts.hour_24) {
+				$form.find('[name="hour_24"]').prop('checked', true);
 			}
 			if (opts && opts.num_color) {
 				$form.find('[name="num_color"]').prop('checked', true);
