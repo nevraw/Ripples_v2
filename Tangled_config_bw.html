@@ -38,6 +38,20 @@
   		</fieldset>
                 <br>     
 		<fieldset style="padding:6px">
+			<legend>Choice of colors</legend>
+			<div class="radio">
+			<label>
+				<input type="radio" name="num_color" value="0" checked>Cyan<br>
+				<input type="radio" name="num_color" value="1">Green
+				<input type="radio" name="num_color" value="2">Lilac
+				<input type="radio" name="num_color" value="3">Pink
+				<input type="radio" name="num_color" value="4">Yellow
+				<input type="radio" name="num_color" value="5">White
+			</label>
+		</div>
+  		</fieldset>
+                <br>     
+		<fieldset style="padding:6px">
 			<a href="pebblejs://close" class="btn btn-lg btn-default" role="button">Cancel</a>
 				<button type="button" class="btn btn-lg btn-primary" id="b-submit">Save</button>
 		</fieldset>
@@ -59,7 +73,8 @@
 			});
 
 			var options = {
-				hour_24:	params.hour_24 === 'on'
+				hour_24:	params.hour_24 === 'on',
+				num_color:	params.num_color === 'on' 
 			}
 			return options;
 		}
@@ -69,6 +84,9 @@
 			var opts	= JSON.parse(getParam('options'));
 			if (opts && opts.hour_24) {
 				$form.find('[name="hour_24"]').prop('checked', true);
+			}
+			if (opts && opts.num_color) {
+				$form.find('[name="num_color"]').prop('checked', true);
 			}
 		}
 
