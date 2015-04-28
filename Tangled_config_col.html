@@ -38,21 +38,11 @@
   		</fieldset>
                 <br>     
 		<fieldset style="padding:6px">
-			<legend>Different or same colors for hours & minutes</legend>
-			<div class="radio">
-			<label>
-				<input type="radio" name="same_color" value="off" checked>Hours & minutes different colors<br>
-				<input type="radio" name="same_color" value="on">Hours & minutes same color
-			</label>
-		</div>
-  		</fieldset>
-                <br>     
-		<fieldset style="padding:6px">
 			<legend>Choice of colors</legend>
 			<div class="radio">
 			<label>
-				<input type="radio" name="num_color" value="off" checked>Cyan (minutes Green, if different)<br>
-				<input type="radio" name="num_color" value="on">Red (minutes Yellow, if different)
+				<input type="radio" name="num_color" value="off" checked>Cyan<br>
+				<input type="radio" name="num_color" value="on">Green
 			</label>
 		</div>
   		</fieldset>
@@ -80,7 +70,6 @@
 
 			var options = {
 				hour_24:	params.hour_24 === 'on',
-				same_color:	params.same_color === 'on',
 				num_color:	params.num_color === 'on'
 			}
 			return options;
@@ -91,9 +80,6 @@
 			var opts	= JSON.parse(getParam('options'));
 			if (opts && opts.hour_24) {
 				$form.find('[name="hour_24"]').prop('checked', true);
-			}
-			if (opts && opts.same_color) {
-				$form.find('[name="same_color"]').prop('checked', true);
 			}
 			if (opts && opts.num_color) {
 				$form.find('[name="num_color"]').prop('checked', true);
