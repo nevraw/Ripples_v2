@@ -41,12 +41,12 @@
 			<legend>Choice of colors</legend>
 			<div class="radio">
 			<label>
-				<input type="radio" name="num_color" value="0" checked>Cyan<br>
-				<input type="radio" name="num_color" value="1">Green
-				<input type="radio" name="num_color" value="2">Lilac
-				<input type="radio" name="num_color" value="3">Pink
-				<input type="radio" name="num_color" value="4">Yellow
-				<input type="radio" name="num_color" value="5">White
+				<input type="radio" data-type="int" name="num_color" value="0" checked>Cyan<br>
+				<input type="radio" data-type="int" name="num_color" value="1">Green
+				<input type="radio" data-type="int" name="num_color" value="2">Lilac
+				<input type="radio" data-type="int" name="num_color" value="3">Pink
+				<input type="radio" data-type="int" name="num_color" value="4">Yellow
+				<input type="radio" data-type="int" name="num_color" value="5">White
 			</label>
 		</div>
   		</fieldset>
@@ -74,7 +74,7 @@
 
 			var options = {
 				hour_24:	params.hour_24 === 'on',
-				num_color:	params.num_color === 'on' 
+				num_color:	Number( $("params.num_color") ) 
 			}
 			return options;
 		}
