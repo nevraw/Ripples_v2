@@ -41,14 +41,13 @@
 			<legend>Choice of colors</legend>
 			<div class="radio">
 			<label>
-				<input type="radio" data-type="int" name="num_color" value="0" checked>Cyan<br>
-				<input type="radio" data-type="int" name="num_color" value="1">Green
-				<input type="radio" data-type="int" name="num_color" value="2">Lilac
-				<input type="radio" data-type="int" name="num_color" value="3">Pink
-				<input type="radio" data-type="int" name="num_color" value="4">Yellow
-				<input type="radio" data-type="int" name="num_color" value="5">White
+			   <input type="radio" data-type="int" name="num_color" id="nun-color-0" value="0" checked>Cyan<br>
+			   <input type="radio" data-type="int" name="num_color" id="nun-color-1" value="1">Green<br>
+			   <input type="radio" data-type="int" name="num_color" id="nun-color-2" value="2">Lilac<br>
+			   <input type="radio" data-type="int" name="num_color" id="nun-color-3" value="3">Pink<br>
+			   <input type="radio" data-type="int" name="num_color" id="nun-color-4" value="4">Yellow<br>
+			   <input type="radio" data-type="int" name="num_color" id="nun-color-5" value="5">White
 			</label>
-		</div>
   		</fieldset>
                 <br>     
 		<fieldset style="padding:6px">
@@ -78,6 +77,16 @@
 			}
 			return options;
 		}
+     $().ready(function() {
+       if (typeof window.localStorage !== "undefined") {
+       	console.log("Not undefined :)");
+        if (window.localStorage.tutorial) {
+          ls_pto = JSON.parse(window.localStorage.tutorial);
+          // the Pebble webview dies on the next line...
+          $("input[name=key0][id=key0-"+ls_pto["option0"]+"]").prop('checked',true);
+          $("input[name=key0]").checkboxradio('refresh');
+        }
+       }
 
 		function applyOptions() {
 			var $form	= $('#config');
@@ -85,8 +94,8 @@
 			if (opts && opts.hour_24) {
                                 $form.find('[name="hour_24"]').prop('checked', true);
 			}
-			if (opts && opts.num_color) {
-				$form.find('[name="num_color"]').prop('checked', true);
+			$("input[name=num_color][id=num_color-"+opts["num_color"]+"]").prop('checked',true);
+			$("input[name=num_color]").checkboxradio('refresh');
 			}
 		}
 
