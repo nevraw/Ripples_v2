@@ -74,7 +74,7 @@
 
 			var options = {
 				hour_24:	params.hour_24 === 'on',
-				num_color:	Number( $("params.num_color") ) 
+				num_color:	Number( $("input[name=params.num_color]:checked").val() ) 
 			}
 			return options;
 		}
@@ -83,7 +83,7 @@
 			var $form	= $('#config');
 			var opts	= JSON.parse(getParam('options'));
 			if (opts && opts.hour_24) {
-				$form.find('[name="hour_24"]').prop('checked', true);
+                                $form.find('[name="hour_24"]').prop('checked', true);
 			}
 			if (opts && opts.num_color) {
 				$form.find('[name="num_color"]').prop('checked', true);
