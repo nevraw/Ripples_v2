@@ -41,8 +41,8 @@
 			<legend>Choice of colors</legend>
 			<div class="radio">
 			<label>
-				<input type="radio" name="num_color" value="1" checked>Cyan<br>
-				<input type="radio" name="num_color" value="2">Green
+				<input type="radio" data-type=int name="colour" value="1" checked>Cyan<br>
+				<input type="radio" data-type=int name="colour" value="2">Green
 			</label>
 		</div>
   		</fieldset>
@@ -68,7 +68,7 @@
 			});
 			var options = {
 				hour_24:	params.hour_24 === 'on',
-				num_color:	params.num_color !== '1'
+				colour:		params.colour !== 1
 			}
 			return options;
 		}
@@ -78,8 +78,8 @@
 			if (opts && opts.hour_24) {
 				$form.find('[name="hour_24"]').prop('checked', true);
 			}
-			if (opts && opts.num_color) {
-				$form.find('[name="num_color"]').prop('checked', true);
+			if (opts && opts.colour) {
+				$form.find('[name="colour"]').prop('checked', true);
 			}
 		}
 		function getParam(key) {
@@ -123,4 +123,5 @@
 		applyOptions();
    </script>
 
-</body></html>
+</body>
+</html>
