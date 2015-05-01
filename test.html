@@ -41,8 +41,8 @@
 			<legend>Choice of colors</legend>
 			<div class="radio">
 			<label>
-				<input type="radio" name="num_color" value="off" checked>Cyan<br>
-				<input type="radio" name="num_color" value="on">Green
+				<input type="radio" name="num_color" value="1" checked>Cyan<br>
+				<input type="radio" name="num_color" value="2">Green
 			</label>
 		</div>
   		</fieldset>
@@ -68,7 +68,7 @@
 			});
 			var options = {
 				hour_24:	params.hour_24 === 'on',
-				num_color:	params.num_color === 'on'
+				num_color:	params.num_color !== '1'
 			}
 			return options;
 		}
