@@ -26,6 +26,69 @@
    	<p>This configuration file is for Pebble watches that support color.</p>
 		</div>
 
+  <div id="bluetooth" data-role="fieldcontain" class="ui-bar ui-field-contain ui-body ui-br">
+    <fieldset data-role="controlgroup"
+                     data-type="horizontal" 
+                     data-mini="true" 
+                     class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal ui-mini" 
+                     aria-disabled="false" 
+                     data-disabled="false" 
+                     data-shadow="false" 
+                     data-corners="true" 
+                     data-exclude-invisible="true" 
+                     data-init-selector=":jqmData(role=&#39;controlgroup&#39;)">
+       <div role="heading" class="ui-controlgroup-label">
+         <legend>Vibrate on BT disconnect</legend>
+       </div>
+       <div class="ui-controlgroup-controls">
+        
+         <div class="ui-radio">
+          <input id="bluetooth1"
+                  name="bluetooth" 
+                  value="0" 
+                  data-theme="" 
+                  type="radio">
+           <label for="bluetooth1" 
+                  data-corners="true" 
+                  data-shadow="false" 
+                  data-iconshadow="true" 
+                  data-wrapperels="span" 
+                  data-icon="radio-off" 
+                  data-theme="c" 
+                  data-mini="true" 
+                  class="ui-radio-off ui-btn ui-btn-up-c ui-btn-corner-all ui-mini ui-btn-icon-left ui-first-child">
+             <span class="ui-btn-inner">
+               <span class="ui-btn-text">Off</span>
+               <span class="ui-icon ui-icon-radio-off ui-icon-shadow">&nbsp;</span>
+             </span>
+           </label>
+         </div>
+         <div class="ui-radio">
+           <input id="bluetooth2" 
+                  name="bluetooth" 
+                  value="1" 
+                  data-theme="" 
+                  type="radio" 
+                  checked="">
+           <label for="bluetooth2" 
+                  data-corners="true" 
+                  data-shadow="false" 
+                  data-iconshadow="true" 
+                  data-wrapperels="span" 
+                  data-icon="radio-on" 
+                  data-theme="c" 
+                  data-mini="true" 
+                  class="ui-radio-on ui-btn-active ui-btn ui-btn-up-c ui-btn-corner-all ui-mini ui-btn-icon-left ui-last-child">
+             <span class="ui-btn-inner">
+               <span class="ui-btn-text">On</span>
+               <span class="ui-icon ui-icon-radio-on ui-icon-shadow">&nbsp;</span>
+             </span>
+           </label>
+         </div>
+       </div>
+     </fieldset>
+   </div>
+
 	<form id="config" role="form" class="input-lg" style="padding:10px">
 		<fieldset style="padding:6px">
 			<legend>Time</legend>
