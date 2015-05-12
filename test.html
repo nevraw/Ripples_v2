@@ -86,53 +86,8 @@
 			if (opts && opts.hour_24) {
 				$form.find('[name="hour_24"]').prop('checked', true);
 			}
-			if (opts && opts.color == 0) {
-					$form.find('[name="color[0]"]').prop('checked', true);
-					$form.find('[name="color[1]"]').prop('checked', false);
-					$form.find('[name="color[2]"]').prop('checked', false);
-					$form.find('[name="color[3]"]').prop('checked', false);
-					$form.find('[name="color[4]"]').prop('checked', false);
-					$form.find('[name="color[5]"]').prop('checked', false);
-			}
-			if (opts && opts.color == 1) {
-					$form.find('[name="color[0]"]').prop('checked', false);
-					$form.find('[name="color[1]"]').prop('checked', true);
-					$form.find('[name="color[2]"]').prop('checked', false);
-					$form.find('[name="color[3]"]').prop('checked', false);
-					$form.find('[name="color[4]"]').prop('checked', false);
-					$form.find('[name="color[5]"]').prop('checked', false);
-			}
-			if (opts && opts.color == 2) {
-					$form.find('[name="color[0]"]').prop('checked', false);
-					$form.find('[name="color[1]"]').prop('checked', false);
-					$form.find('[name="color[2]"]').prop('checked', true);
-					$form.find('[name="color[3]"]').prop('checked', false);
-					$form.find('[name="color[4]"]').prop('checked', false);
-					$form.find('[name="color[5]"]').prop('checked', false);
-			}
-			if (opts && opts.color == 3) {
-					$form.find('[name="color[0]"]').prop('checked', false);
-					$form.find('[name="color[1]"]').prop('checked', false);
-					$form.find('[name="color[2]"]').prop('checked', false);
-					$form.find('[name="color[3]"]').prop('checked', true);
-					$form.find('[name="color[4]"]').prop('checked', false);
-					$form.find('[name="color[5]"]').prop('checked', false);
-			}
-			if (opts && opts.color == 4) {
-					$form.find('[name="color[0]"]').prop('checked', false);
-					$form.find('[name="color[1]"]').prop('checked', false);
-					$form.find('[name="color[2]"]').prop('checked', false);
-					$form.find('[name="color[3]"]').prop('checked', false);
-					$form.find('[name="color[4]"]').prop('checked', true);
-					$form.find('[name="color[5]"]').prop('checked', false);
-			}
-			if (opts && opts.color == 5) {
-					$form.find('[name="color[0]"]').prop('checked', false);
-					$form.find('[name="color[1]"]').prop('checked', false);
-					$form.find('[name="color[2]"]').prop('checked', false);
-					$form.find('[name="color[3]"]').prop('checked', false);
-					$form.find('[name="color[4]"]').prop('checked', false);
-					$form.find('[name="color[5]"]').prop('checked', true);
+			if (opts && opts.color) {
+				$form.find('[name="color"]').prop('checked', true);
 			}
 		}
 		
