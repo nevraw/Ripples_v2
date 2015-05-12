@@ -86,10 +86,26 @@
 			if (opts && opts.hour_24) {
 				$form.find('[name="hour_24"]').prop('checked', true);
 			}
-			
-				$form.find('[name="color"]').prop('checked', true);
-			
+			if (opts && opts.color[0]) {
+				$form.find('[name="color[0]"]').prop('checked', true);
+			}
+			if (opts && opts.color[1]) {
+				$form.find('[name="color[1]"]').prop('checked', true);
+			}
+			if (opts && opts.color[2]) {
+				$form.find('[name="color[2]"]').prop('checked', true);
+			}
+			if (opts && opts.color[3]) {
+				$form.find('[name="color[3]"]').prop('checked', true);
+			}
+			if (opts && opts.color[4]) {
+				$form.find('[name="color[4]"]').prop('checked', true);
+			}
+			if (opts && opts.color[5]) {
+				$form.find('[name="color[5]"]').prop('checked', true);
+			}
 		}
+		
 		function getParam(key) {
 			var params = window.location.hash;
 			var val;
@@ -100,12 +116,14 @@
 			});
 			return val;
 		}
+		
 		function parseVersion(verStr) {
 			var parts = verStr.split('.');
 			return parts.reduce(function(sum, part) {
 				return (sum * 1000) + parseInt(part, 10);
 			}, 0);
 		}
+		
 		// Something like this to get query variables.
 		function getQueryParam(variable, default_) {
 		    var query = window.location.search.substring(1);
@@ -117,10 +135,12 @@
 		    }
 		    return default_ || false;
 		}
+		
 		$("#b-submit").click(function() {
 			var return_to = getQueryParam('return_to', 'pebblejs://close#');
 			document.location = return_to + encodeURIComponent(JSON.stringify(saveOptions()));
 		});
+		
 		var version = getParam('v');
 		if (!version || (parseVersion(version) < parseVersion(LATEST))) {
 			$('#update-available').removeClass('hidden');
