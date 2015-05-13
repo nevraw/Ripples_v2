@@ -25,11 +25,6 @@ function changeColor(picker_id, color) {
             }
 
             break;
-        case 'timecolor':
-            settings.timecolor = gcolor;
-            $(".number").css("color", '#' + hcolor);
-            break;
-
     }
 
 }
