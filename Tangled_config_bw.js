@@ -18,10 +18,20 @@ function changeColor(picker_id, color) {
         case 'bgcolor':
             settings.bgcolor = gcolor;
             $(".screen").css("background-color", '#' + hcolor);
-            break;
+            if (color === 'fff'} {
+                settings.timecolor = GColor.fromHex("000000");
+            } else {
+                settings.timecolor = GColor.fromHex("FFFFFF");
+            }
+       break;
         case 'timecolor':
             settings.timecolor = gcolor;
             $(".number").css("color", '#' + hcolor);
+            if (color === 'fff'} {
+                settings.bgcolor = GColor.fromHex("000000");
+            } else {
+                settings.bgcolor = GColor.fromHex("FFFFFF");
+            }
             break;
 
     }
