@@ -7,9 +7,8 @@
 .label {
     font-family: Verdana;
     font-weight: bold;
-    font-size:25px;
+    font-size:20px;
 }
-
 
 #tblDir {
             width: 305px;
@@ -19,35 +18,16 @@
 
         }
 
-        #tblDir td {
+#tblDir td {
             width:100px;
             text-align:center;
             opacity: 1;
         }
 
-        #tblDir td div {
+#tblDir td div {
             margin:auto
         }
 
-        #tblDir td input {
+#tblDir td input {
             position:relative;
         }
-
-.screen {
-    width:144px;
-    height:168px;
-    border: solid 1px black;
-    overflow:hidden;  
-    position:relative;
-}
-
-.number {
-    font-family: arial;
-    font-weight: bold;
-    font-size:65px;
-}        
-
-#h1 {position: relative;left:35px;top:10px}
-#h2 {position: relative; left:15px;top:10px}
-#m1 {position: relative;left:35px;top:-5px}
-#m2 {position: relative; left:15px;top:-5px}
