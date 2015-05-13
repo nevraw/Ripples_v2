@@ -1,136 +1,44 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Basic Page Needs
-  ================================================== -->
-<meta charset="utf-8">
-<title>Configure Snake</title>
-<meta name="description" content="Configuration page for Tangled, a Pebble watchface">
-<meta name="author" content="Nev Rawlins">
-<!-- Mobile Specific Metas
-  ================================================== -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8" />
+    <title>Tangled Config</title>
+    <link type="text/css" rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link type="text/css" rel="stylesheet" href="Tangled_config.css" />
+    <link type="text/css" rel="stylesheet" href="spectrum.css" />
 
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="spectrum.js"></script>
+    <script type="text/javascript" src="gcolor.js"></script>
+    <script type="text/javascript" src="color_shadow_config.js"></script>
 </head>
-<body>
-
-<!-- Primary Page Layout
-	================================================== -->
-<div class="container">
+<body style="position:relative; left:5px;">
 	<header>
-		<h1>Configure Tangled</h1>
+		<h1>Tangled settings</h1>
 	</header>
-	
-	<div id="info" class="bg-info"  style="padding:4px">
-   	<p>This configuration file is for Pebble watches that support color.</p>
-		</div>
+ 
+    <p id="ptblColorSelection" style="display:none">
+        <span class="label">Select Colors</span>
+    </p>
+    <table id="tblColorSelection" style="display:none">
+        <tr>
+            <td><label><input name="bgcolor" id="bgcolor" class="picker">&nbsp;Background</label></td>
+            <td><label><input name="timecolor" id="timecolor" class="picker">&nbsp;Time</label></td>
+        </tr>
+    </table>
 
-	<form id="config" role="form" class="input-lg" style="padding:10px">
-		<fieldset style="padding:6px">
-			<legend>Time</legend>
-			<div class="radio">
-			<label>
-				<input type="radio" name="hour_24" value="off" checked>12-hour mode
-				<input type="radio" name="hour_24" value="on">24-hour mode
-			</label>
-		</div>
-  		</fieldset>
-                <br>     
-		<fieldset style="padding:6px">
-			<legend>Choice of colors</legend>
-			<div class="radio">
-			<label>
-				<input type="radio" name="num_color" value="off" checked>Cyan<br>
-				<input type="radio" name="num_color" value="on">Green
-			</label>
-		</div>
-  		</fieldset>
-                <br>
-		<fieldset style="padding:6px">
-			<a href="pebblejs://close" class="btn btn-lg btn-default" role="button">Cancel</a>
-				<button type="button" class="btn btn-lg btn-primary" id="b-submit">Save</button>
-		</fieldset>
-	</form>
+    <div id="main" style="display:none">
+        <form method="post" target="_top" >
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="ZT2CBJ5JNMTYA">
+            <br />
 
-	</div><!-- container -->
+            <input id="xbtnSave" type="button" value="Save" style="margin-right:30px">
+            <input id="xbtnCancel" type="button" value="Cancel" style="margin-right:30px">
+        </form>
+    </div>
 
-<!-- End Document
-================================================== -->
-
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script>
-		var LATEST = "1.0";
-
-		function saveOptions() {
-			var params = {};
-			$('#config').serializeArray().forEach(function(pair) {
-				params[pair.name] = pair.value;
-			});
-
-			var options = {
-				hour_24:	params.hour_24 === 'on',
-				num_color:	params.num_color === 'on'
-			}
-			return options;
-		}
-
-		function applyOptions() {
-			var $form	= $('#config');
-			var opts	= JSON.parse(getParam('options'));
-			if (opts && opts.hour_24) {
-				$form.find('[name="hour_24"]').prop('checked', true);
-			}
-			if (opts && opts.num_color) {
-				$form.find('[name="num_color"]').prop('checked', true);
-			}
-		}
-
-		function getParam(key) {
-			var params = window.location.hash;
-			var val;
-			params.replace(/(?:^|[#&])([a-z]+)=([^&]+)/ig, function(_, k, v) {
-				if (key === k) {
-					val = decodeURIComponent(v);
-				}
-			});
-			return val;
-		}
-
-		function parseVersion(verStr) {
-			var parts = verStr.split('.');
-			return parts.reduce(function(sum, part) {
-				return (sum * 1000) + parseInt(part, 10);
-			}, 0);
-		}
-
-		// Something like this to get query variables.
-		function getQueryParam(variable, default_) {
-		    var query = location.search.substring(1);
-		    var vars = query.split('&');
-		    for (var i = 0; i < vars.length; i++) {
-		        var pair = vars[i].split('=');
-		        if (pair[0] == variable)
-		            return decodeURIComponent(pair[1]);
-		    }
-		    return default_ || false;
-		}
-
-
-		$("#b-submit").click(function() {
-			var return_to = getQueryParam('return_to', 'pebblejs://close#');
-			document.location = return_to + encodeURIComponent(JSON.stringify(saveOptions()));
-		});
-
-		var version = getParam('v');
-		if (!version || (parseVersion(version) < parseVersion(LATEST))) {
-			$('#update-available').removeClass('hidden');
-		}
-		else {
-			$('#up-to-date').removeClass('hidden');
-		}
-
-		applyOptions();
-   </script>
-
-</body></html>
+</body>
+</html>
