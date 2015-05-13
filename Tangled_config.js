@@ -10,19 +10,6 @@ function getURLVariable(name) {
     else return results[1];
 }
 
-// displaying current time
-function startTime() {
-    var today=new Date();
-    var h=today.getHours();
-    var m=today.getMinutes();
-    $('#h1').text(Math.floor(h/10));
-    $('#h2').text(h % 10);
-    $('#m1').text(Math.floor(m/10));
-    $('#m2').text(m % 10);
-    
-    setTimeout(function(){startTime()},1000);
-}
-
 function changeColor(picker_id, color) {
     var hcolor = color.toHex();
     var gcolor = GColor.fromHex(hcolor);
@@ -36,7 +23,7 @@ function changeColor(picker_id, color) {
             settings.timecolor = gcolor;
             $(".number").css("color", '#' + hcolor);
             break;
-            
+
     }
 
 }
@@ -76,7 +63,7 @@ $(document).ready(function () {
 
     })
 
-    
+
     // defining color pickers
     $(".picker").spectrum({
         showPaletteOnly: true,
@@ -104,6 +91,8 @@ $(document).ready(function () {
     }
 
 
+    $(":radio[value=" + settings.shadowdirecton + "]").attr('checked', true);
+    
     $(".number").css("color", '#' + GColor.toHex(settings.timecolor));
     $("#timecolor").spectrum("set", '#' + GColor.toHex(settings.timecolor));
 
@@ -111,13 +100,23 @@ $(document).ready(function () {
     $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
 
 
+    $('#tblColorSelection').show();
+    $('#ptblColorSelection').show();
+
+    $('.number').css({
+        top:'-290px',
+        left: '77px'
+    });
+
+    $('#tblDir').css({
+        left: "0",
+        top: "-25px"
+    });
+
     $("input[type='radio']").checkboxradio();
     $("input[type='button']").button({ inline: true, mini: true, theme: "b" });
     $('.sp-replacer').unwrap();
      
-    //starting clock
-    startTime();
-
     $('#main').show();
 
 });
