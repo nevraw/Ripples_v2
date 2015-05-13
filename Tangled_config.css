@@ -18,16 +18,16 @@
 
         }
 
-#tblDir td {
+        #tblDir td {
             width:100px;
             text-align:center;
             opacity: 1;
         }
 
-#tblDir td div {
+        #tblDir td div {
             margin:auto
         }
 
-#tblDir td input {
+        #tblDir td input {
             position:relative;
         }
