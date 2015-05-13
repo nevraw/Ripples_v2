@@ -18,12 +18,19 @@ function changeColor(picker_id, color) {
         case 'bgcolor':
             settings.bgcolor = gcolor;
             $(".screen").css("background-color", '#' + hcolor);
-            if (color === 'fff'} {
-                settings.timecolor = GColor.fromHex("000000");
-            } else {
+            if (color == '000') {
                 settings.timecolor = GColor.fromHex("FFFFFF");
+            } else {
+                settings.timecolor = GColor.fromHex("000000");
             }
-       break;
+
+            break;
+        case 'timecolor':
+            settings.timecolor = gcolor;
+            $(".number").css("color", '#' + hcolor);
+            break;
+
+    }
 
 }
 
@@ -34,6 +41,11 @@ var pebble_palette = [
 $(document).ready(function () {
 
     $('#xbtnSave').click(function () {
+
+        if (settings.bgcolor == settings.timecolor) {
+            alert('Please select different colors for time and background');
+            return
+        }
 
         localStorage.setItem("bwsettings", JSON.stringify(settings));
         
