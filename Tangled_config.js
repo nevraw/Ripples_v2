@@ -86,8 +86,8 @@ $(document).ready(function () {
     if(settings==null) {
         settings = {};
       
-        settings.bgcolor = GColor.fromHex("FFFF00");
-        settings.timecolor = GColor.fromHex("FFFFFF");
+        settings.bgcolor = GColor.fromHex("000000");
+        settings.timecolor = GColor.fromHex("00FFFF");
     }
 
 
