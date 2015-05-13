@@ -35,11 +35,6 @@ $(document).ready(function () {
 
     $('#xbtnSave').click(function () {
 
-        if (settings.bgcolor == settings.timecolor) {
-            alert('Please select different colors for time and background');
-            return
-        }
-
         localStorage.setItem("bwsettings", JSON.stringify(settings));
         
         var location = (decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#") + encodeURIComponent(JSON.stringify(settings));
