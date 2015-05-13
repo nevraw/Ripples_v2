@@ -27,21 +27,3 @@
             position:relative;
         }
 
-.screen {
-    width:144px;
-    height:168px;
-    border: solid 1px black;
-    overflow:hidden;  
-    position:relative;
-}
-
-.number {
-    font-family: arial;
-    font-weight: bold;
-    font-size:65px;
-}        
-
-#h1 {position: relative;left:35px;top:10px}
-#h2 {position: relative; left:15px;top:10px}
-#m1 {position: relative;left:35px;top:-5px}
-#m2 {position: relative; left:15px;top:-5px}
