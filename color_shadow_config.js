@@ -63,7 +63,7 @@ $(document).ready(function () {
 
     })
 
-    
+
     // defining color pickers
     $(".picker").spectrum({
         showPaletteOnly: true,
