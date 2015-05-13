@@ -1,9 +1,14 @@
+.headlabel {
+    font-family: Verdana;
+    font-weight: bold;
+    font-size:28px;
+}
+
 .label {
     font-family: Verdana;
     font-weight: bold;
-    font-size:25px;
+    font-size:20px;
 }
-
 
 #tblDir {
             width: 305px;
