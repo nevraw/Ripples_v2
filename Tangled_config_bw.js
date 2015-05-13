@@ -18,7 +18,7 @@ function changeColor(picker_id, color) {
         case 'bgcolor':
             settings.bgcolor = gcolor;
             $(".screen").css("background-color", '#' + hcolor);
-            if (color == '000') {
+            if (settings.bgcolor == GColor.fromHex("000000")) {
                 settings.timecolor = GColor.fromHex("FFFFFF");
             } else {
                 settings.timecolor = GColor.fromHex("000000");
