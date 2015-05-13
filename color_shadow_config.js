@@ -100,18 +100,18 @@ $(document).ready(function () {
     $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
 
 
-        $('#tblColorSelection').show();
-        $('#ptblColorSelection').show();
+    $('#tblColorSelection').show();
+    $('#ptblColorSelection').show();
 
-        $('.number').css({
-            top:'-290px',
-            left: '77px'
-        });
+    $('.number').css({
+        top:'-290px',
+        left: '77px'
+    });
 
-        $('#tblDir').css({
-            left: "0",
-            top: "-25px"
-        });
+    $('#tblDir').css({
+        left: "0",
+        top: "-25px"
+    });
 
     $("input[type='radio']").checkboxradio();
     $("input[type='button']").button({ inline: true, mini: true, theme: "b" });
