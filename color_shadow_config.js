@@ -1,3 +1,4 @@
+
 var settings;
 
 // to get value of query string
@@ -8,6 +9,20 @@ function getURLVariable(name) {
         results = regex.exec(window.location.href);
     if (results == null) return "";
     else return results[1];
+}
+
+
+// displaying current time
+function startTime() {
+    var today=new Date();
+    var h=today.getHours();
+    var m=today.getMinutes();
+    $('#h1').text(Math.floor(h/10));
+    $('#h2').text(h % 10);
+    $('#m1').text(Math.floor(m/10));
+    $('#m2').text(m % 10);
+    
+    setTimeout(function(){startTime()},1000);
 }
 
 function changeColor(picker_id, color) {
@@ -23,6 +38,7 @@ function changeColor(picker_id, color) {
             settings.timecolor = gcolor;
             $(".number").css("color", '#' + hcolor);
             break;
+
     }
 
 }
@@ -54,6 +70,7 @@ $(document).ready(function () {
 
     })
 
+
     $('#xbtnCancel').click(function () {
 
         var location = decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#";
@@ -61,6 +78,7 @@ $(document).ready(function () {
 
     })
 
+    
     // defining color pickers
     $(".picker").spectrum({
         showPaletteOnly: true,
@@ -97,6 +115,42 @@ $(document).ready(function () {
     $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
 
 
+    if (getURLVariable('platform') == 'aplite') {
+
+        settings.bgcolor = GColor.fromHex("000000");
+        settings.timecolor = GColor.fromHex("FFFFFF");
+        settings.h1shadowcolor = GColor.fromHex("808080");
+        settings.h2shadowcolor = GColor.fromHex("808080");
+        settings.m1shadowcolor = GColor.fromHex("808080");
+        settings.m2shadowcolor = GColor.fromHex("808080");
+
+        $('#imgpebble').attr('src', 'pebbleoriginal.png');
+        $('.number').css({
+            top: '-270px',
+            left: '65px'
+        })
+
+        $('#tblDir').css({
+            left: "-12px",
+            top: "10px"
+        });
+
+    } else {
+        $('#imgpebble').attr('src', 'pebbletime.png');
+        $('#tblColorSelection').show();
+        $('#ptblColorSelection').show();
+
+        $('.number').css({
+            top:'-290px',
+            left: '77px'
+        });
+
+        $('#tblDir').css({
+            left: "0",
+            top: "-25px"
+        });
+    }
+
     $("input[type='radio']").checkboxradio();
     $("input[type='button']").button({ inline: true, mini: true, theme: "b" });
     $('.sp-replacer').unwrap();
@@ -104,8 +158,6 @@ $(document).ready(function () {
     //starting clock
     startTime();
 
-    // drawing initial shadows
-    draw_all_shadows();
 
     $('#main').show();
 
