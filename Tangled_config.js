@@ -110,37 +110,6 @@ $(document).ready(function () {
     $(".screen").css("background-color", '#' + GColor.toHex(settings.bgcolor));
     $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
 
-    if (getURLVariable('platform') == 'aplite') {
-
-        settings.bgcolor = GColor.fromHex("000000");
-        settings.timecolor = GColor.fromHex("FFFFFF");
-
-        $('#imgpebble').attr('src', 'pebbleoriginal.png');
-        $('.number').css({
-            top: '-270px',
-            left: '65px'
-        })
-
-        $('#tblDir').css({
-            left: "-12px",
-            top: "10px"
-        });
-
-    } else {
-        $('#imgpebble').attr('src', 'pebbletime.png');
-        $('#tblColorSelection').show();
-        $('#ptblColorSelection').show();
-
-        $('.number').css({
-            top:'-290px',
-            left: '77px'
-        });
-
-        $('#tblDir').css({
-            left: "0",
-            top: "-25px"
-        });
-    }
 
     $("input[type='radio']").checkboxradio();
     $("input[type='button']").button({ inline: true, mini: true, theme: "b" });
