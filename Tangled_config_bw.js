@@ -41,7 +41,7 @@ $(document).ready(function () {
             return
         }
 
-        localStorage.setItem("tsettings", JSON.stringify(settings));
+        localStorage.setItem("bwsettings", JSON.stringify(settings));
         
         var location = (decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#") + encodeURIComponent(JSON.stringify(settings));
         document.location = location;
@@ -69,7 +69,7 @@ $(document).ready(function () {
     });
 
     try {
-        settings = JSON.parse(localStorage.getItem("tsettings"));
+        settings = JSON.parse(localStorage.getItem("bwsettings"));
     }
     catch(err) {
         settings = null;
@@ -80,7 +80,7 @@ $(document).ready(function () {
         settings = {};
       
         settings.bgcolor = GColor.fromHex("000000");
-        settings.timecolor = GColor.fromHex("00FFFF");
+        settings.timecolor = GColor.fromHex("FFFFFF");
     }
 
 
