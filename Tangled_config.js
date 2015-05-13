@@ -48,7 +48,7 @@ $(document).ready(function () {
             return
         }
 
-        localStorage.setItem("settings", JSON.stringify(settings));
+        localStorage.setItem("tsettings", JSON.stringify(settings));
         
         var location = (decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#") + encodeURIComponent(JSON.stringify(settings));
         document.location = location;
@@ -76,7 +76,7 @@ $(document).ready(function () {
     });
 
     try {
-        settings = JSON.parse(localStorage.getItem("settings"));
+        settings = JSON.parse(localStorage.getItem("tsettings"));
     }
     catch(err) {
         settings = null;
