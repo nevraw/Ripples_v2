@@ -1,13 +1,3 @@
-var SHADOW = {
-    LENGTH: 100,
-    DIRECTON: {
-        TO_BOTTOM_RIGHT: 1,
-        TO_BOTTOM_LEFT: 2,
-        TO_TOP_LEFT: 3,
-        TO_TOP_RIGHT: 4
-    }
-}
-
 var settings;
 
 // to get value of query string
@@ -18,93 +8,6 @@ function getURLVariable(name) {
         results = regex.exec(window.location.href);
     if (results == null) return "";
     else return results[1];
-}
-
-// drawing shadow of given color and direction for given digit
-function draw_shadow(element_id, color, direction) {
-    var style = ''; // style of shadow
-    var dx, dy; // direction of shadow, empty or negative
-
-    switch (direction) {
-        case SHADOW.DIRECTON.TO_BOTTOM_RIGHT:
-            dx = ' '; dy = ' '
-            break;
-        case SHADOW.DIRECTON.TO_BOTTOM_LEFT:
-            dx = ' -'; dy = ' '
-            break;
-        case SHADOW.DIRECTON.TO_TOP_LEFT:
-            dx = ' -'; dy = ' -'
-            break;
-        case SHADOW.DIRECTON.TO_TOP_RIGHT:
-            dx = ' '; dy = ' -'
-            break;
-    }
-
-
-    for (var i=1; i<=SHADOW.LENGTH; i++) {
-        style += color + dx + i + 'px' + dy + i + 'px'
-        if (i<SHADOW.LENGTH) style += ',';
-    }
-    
-    $('#' + element_id).css('textShadow', style);
-}
-
-// displaying current time
-function startTime() {
-    var today=new Date();
-    var h=today.getHours();
-    var m=today.getMinutes();
-    $('#h1').text(Math.floor(h/10));
-    $('#h2').text(h % 10);
-    $('#m1').text(Math.floor(m/10));
-    $('#m2').text(m % 10);
-    
-    setTimeout(function(){startTime()},1000);
-}
-
-// drawing shadows for all 4 digit
-function draw_all_shadows() {
-
-    // depending on shadow direction assuring that shadow don't overlap digits
-    switch (settings.shadowdirecton) {
-        case SHADOW.DIRECTON.TO_BOTTOM_RIGHT:
-            $('#h1').css('z-index', 0);
-            $('#h2').css('z-index', 0);
-            $('#m1').css('z-index', 0);
-            $('#m2').css('z-index', 0);
-            break;
-        case SHADOW.DIRECTON.TO_BOTTOM_LEFT:
-            $('#h1').css('z-index', 1);
-            $('#h2').css('z-index', 0);
-            $('#m1').css('z-index', 1);
-            $('#m2').css('z-index', 0);
-            break;
-        case SHADOW.DIRECTON.TO_TOP_LEFT:
-            $('#h1').css('z-index', 2);
-            $('#h2').css('z-index', 1);
-            $('#m1').css('z-index', 1);
-            $('#m2').css('z-index', 0);
-            break;
-        case SHADOW.DIRECTON.TO_TOP_RIGHT:
-            $('#h1').css('z-index', 0);
-            $('#h2').css('z-index', 1);
-            $('#m1').css('z-index', 0);
-            $('#m2').css('z-index', 0);
-            break;
-    }
-
-    //drawing shadows
-    draw_shadow('h1', '#' + GColor.toHex(settings.h1shadowcolor), settings.shadowdirecton);
-    draw_shadow('h2', '#' + GColor.toHex(settings.h2shadowcolor), settings.shadowdirecton);
-    draw_shadow('m1', '#' + GColor.toHex(settings.m1shadowcolor), settings.shadowdirecton);
-    draw_shadow('m2', '#' + GColor.toHex(settings.m2shadowcolor), settings.shadowdirecton);
-
-}
-
-// saving new shadow direction and redrawing shadows
-function changeShadowDirection(direction) {
-    settings.shadowdirecton = direction;
-    draw_all_shadows();
 }
 
 function changeColor(picker_id, color) {
@@ -120,23 +23,6 @@ function changeColor(picker_id, color) {
             settings.timecolor = gcolor;
             $(".number").css("color", '#' + hcolor);
             break;
-        case 'h1shadowcolor':
-            settings.h1shadowcolor = gcolor;
-            draw_shadow('h1', '#' + hcolor, settings.shadowdirecton)
-            break;
-        case 'h2shadowcolor':
-            settings.h2shadowcolor = gcolor;
-            draw_shadow('h2', '#' + hcolor, settings.shadowdirecton)
-            break;
-        case 'm1shadowcolor':
-            settings.m1shadowcolor = gcolor;
-            draw_shadow('m1', '#' + hcolor, settings.shadowdirecton)
-            break;
-        case 'm2shadowcolor':
-            settings.m2shadowcolor = gcolor;
-            draw_shadow('m2', '#' + hcolor, settings.shadowdirecton)
-            break;
-
     }
 
 }
@@ -161,59 +47,12 @@ $(document).ready(function () {
             return
         }
 
-        if (settings.bgcolor == settings.h1shadowcolor || settings.bgcolor == settings.h2shadowcolor || settings.bgcolor == settings.m1shadowcolor || settings.bgcolor == settings.m2shadowcolor) {
-            alert('Please select different colors for shadows and background');
-            return
-        }
-
-        if (settings.timecolor == settings.h1shadowcolor || settings.timecolor == settings.h2shadowcolor || settings.timecolor == settings.m1shadowcolor || settings.timecolor == settings.m2shadowcolor) {
-            alert('Please select different colors for shadows and background');
-            return
-        }
-
         localStorage.setItem("settings", JSON.stringify(settings));
         
         var location = (decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#") + encodeURIComponent(JSON.stringify(settings));
         document.location = location;
 
     })
-
-    $('#xbtnRandom').click(function () {
-
-        var rand, rand1;
-
-        rand = Math.floor((Math.random() * 80)/10); rand1 = Math.floor((Math.random() * 80)/10);
-        $(".number").css("color", '#' + pebble_palette[rand][rand1]);
-        $("#timecolor").spectrum("set", '#' + pebble_palette[rand][rand1]);
-        settings.timecolor = GColor.fromHex($("#timecolor").spectrum("get").toHex());
-
-        rand = Math.floor((Math.random() * 80)/10); rand1 = Math.floor((Math.random() * 80)/10);
-        $(".screen").css("background-color", '#' + pebble_palette[rand][rand1]);
-        $("#bgcolor").spectrum("set", '#' + pebble_palette[rand][rand1]);
-        settings.bgcolor = GColor.fromHex($("#bgcolor").spectrum("get").toHex());
-
-        rand = Math.floor((Math.random() * 80)/10); rand1 = Math.floor((Math.random() * 80)/10);
-        $("#h1shadowcolor").spectrum("set", '#' + pebble_palette[rand][rand1]);
-        settings.h1shadowcolor = GColor.fromHex($("#h1shadowcolor").spectrum("get").toHex());
-
-        rand = Math.floor((Math.random() * 80)/10); rand1 = Math.floor((Math.random() * 80)/10);
-        $("#h2shadowcolor").spectrum("set", '#' + pebble_palette[rand][rand1]);
-        settings.h2shadowcolor = GColor.fromHex($("#h2shadowcolor").spectrum("get").toHex());
-
-        rand = Math.floor((Math.random() * 80)/10); rand1 = Math.floor((Math.random() * 80)/10);
-        $("#m1shadowcolor").spectrum("set", '#' + pebble_palette[rand][rand1]);
-        settings.m1shadowcolor = GColor.fromHex($("#m1shadowcolor").spectrum("get").toHex());
-
-        rand = Math.floor((Math.random() * 80)/10); rand1 = Math.floor((Math.random() * 80)/10);
-        $("#m2shadowcolor").spectrum("set", '#' + pebble_palette[rand][rand1]);
-        settings.m2shadowcolor = GColor.fromHex($("#m2shadowcolor").spectrum("get").toHex());
-
-        rand = Math.floor((Math.random() * 40) / 10) + 1;
-        $(":radio[value=" + rand + "]").prop('checked', true);
-        changeShadowDirection(rand);
-
-    })
-
 
     $('#xbtnCancel').click(function () {
 
@@ -222,7 +61,6 @@ $(document).ready(function () {
 
     })
 
-    
     // defining color pickers
     $(".picker").spectrum({
         showPaletteOnly: true,
@@ -247,11 +85,6 @@ $(document).ready(function () {
       
         settings.bgcolor = GColor.fromHex("FFFF00");
         settings.timecolor = GColor.fromHex("FFFFFF");
-        settings.h1shadowcolor = GColor.fromHex("0000FF");
-        settings.h2shadowcolor = GColor.fromHex("FF0000");
-        settings.m1shadowcolor = GColor.fromHex("008000");
-        settings.m2shadowcolor = GColor.fromHex("800080");
-        settings.shadowdirecton = SHADOW.DIRECTON.TO_BOTTOM_RIGHT;
     }
 
 
@@ -263,46 +96,6 @@ $(document).ready(function () {
     $(".screen").css("background-color", '#' + GColor.toHex(settings.bgcolor));
     $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
 
-    $("#h1shadowcolor").spectrum("set", '#' + GColor.toHex(settings.h1shadowcolor));
-    $("#h2shadowcolor").spectrum("set", '#' + GColor.toHex(settings.h2shadowcolor));
-    $("#m1shadowcolor").spectrum("set", '#' + GColor.toHex(settings.m1shadowcolor));
-    $("#m2shadowcolor").spectrum("set", '#' + GColor.toHex(settings.m2shadowcolor));
-
-    if (getURLVariable('platform') == 'aplite') {
-
-        settings.bgcolor = GColor.fromHex("000000");
-        settings.timecolor = GColor.fromHex("FFFFFF");
-        settings.h1shadowcolor = GColor.fromHex("808080");
-        settings.h2shadowcolor = GColor.fromHex("808080");
-        settings.m1shadowcolor = GColor.fromHex("808080");
-        settings.m2shadowcolor = GColor.fromHex("808080");
-
-        $('#imgpebble').attr('src', 'pebbleoriginal.png');
-        $('.number').css({
-            top: '-270px',
-            left: '65px'
-        })
-
-        $('#tblDir').css({
-            left: "-12px",
-            top: "10px"
-        });
-
-    } else {
-        $('#imgpebble').attr('src', 'pebbletime.png');
-        $('#tblColorSelection').show();
-        $('#ptblColorSelection').show();
-
-        $('.number').css({
-            top:'-290px',
-            left: '77px'
-        });
-
-        $('#tblDir').css({
-            left: "0",
-            top: "-25px"
-        });
-    }
 
     $("input[type='radio']").checkboxradio();
     $("input[type='button']").button({ inline: true, mini: true, theme: "b" });
