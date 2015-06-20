@@ -15,13 +15,21 @@
     <script type="text/javascript" src="Ripples_config_col.js"></script>
 </head>
 <style>
-  .conditional_form_part {
-    display: none;
+.reveal-if-active {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: scale(0.8);
+  transition: 0.5s;
+  input[type="radio"]:checked ~ &,
+  input[type="checkbox"]:checked ~ & {
+    opacity: 1;
+    max-height: 100px;
+    overflow: visible;
+    padding: 10px 20px;
+    transform: scale(1);
   }
-
-$('#radio').background('checked') + .conditional_form_part {
-    display: block;
-  }
+}
 </style>
 
 <body style="position:relative; left:5px;">
@@ -48,8 +56,10 @@ $('#radio').background('checked') + .conditional_form_part {
             <td><label><input name="bgcolor" id="bgcolor" class="picker">&nbsp;Background</label></td>
             <td><label><input name="timecolor" id="timecolor" class="picker">&nbsp;Time</label></td>
 
-            <div class="conditional_form_part">
-              <td><label><input name="ripplescolor" id="ripplescolor" class="picker">&nbsp;Background ripples</label></td>
+            <div class="reveal-if-active">
+              <label for="which-dog">Good call. What's the name of your favorite dog?</label>
+              <input class="require-if-active">
+              	<td><label><input name="ripplescolor" id="ripplescolor" class="picker">&nbsp;Background ripples</label></td>
             </div>
         </tr>
     </table>
