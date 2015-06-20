@@ -48,7 +48,7 @@ $(document).ready(function () {
             return
         }
 
-        localStorage.setItem("colsettings", JSON.stringify(settings));
+        localStorage.setItem("Ripples_colsettings", JSON.stringify(settings));
         
         var location = (decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#") + encodeURIComponent(JSON.stringify(settings));
         document.location = location;
@@ -76,7 +76,7 @@ $(document).ready(function () {
     });
 
     try {
-        settings = JSON.parse(localStorage.getItem("colsettings"));
+        settings = JSON.parse(localStorage.getItem("Ripples_colsettings"));
     }
     catch(err) {
         settings = null;
