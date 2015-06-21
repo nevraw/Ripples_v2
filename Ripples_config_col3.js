@@ -43,6 +43,14 @@ function setCheckedValue(radioObj, newValue) {
 	}
 }
 
+function getRipples() {
+	var params = {};
+	$('#BGSelection').serializeArray().forEach(function(pair) {
+		params[pair.name] = pair.value;
+	});
+	return params.background;
+}
+
 function changeColor(picker_id, color) {
     var hcolor = color.toHex();
     var gcolor = GColor.fromHex(hcolor);
@@ -84,11 +92,7 @@ $(document).ready(function () {
             return
         }
 
-	var params = {};
-	$('#BGSelection').serializeArray().forEach(function(pair) {
-		params[pair.name] = pair.value;
-	});
-	settings.background = params.background;
+	settings.background = getRipples();
 
 //        settings.background = getCheckedValue(document.form['BGSelection'].elements['background']);
 
