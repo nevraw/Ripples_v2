@@ -136,7 +136,7 @@ $(document).ready(function () {
 
 
 //    $(":radio[value=" + settings.background + "]").attr('checked', true);
-//    $(".background").css("color", '#' + GColor.toHex(settings.timecolor));
+    $(".background").css("color", '#' + GColor.toHex(settings.timecolor));
 
     $(".number").css("color", '#' + GColor.toHex(settings.timecolor));
     $("#timecolor").spectrum("set", '#' + GColor.toHex(settings.timecolor));
