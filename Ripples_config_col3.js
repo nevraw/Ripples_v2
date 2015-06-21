@@ -84,7 +84,13 @@ $(document).ready(function () {
             return
         }
 
-        settings.background = getCheckedValue(document.form['BGSelection'].elements['background']);
+	var params = {};
+	$('#BGSelection').serializeArray().forEach(function(pair) {
+		params[pair.name] = pair.value;
+	});
+	settings.background = params.background;
+
+//        settings.background = getCheckedValue(document.form['BGSelection'].elements['background']);
 
         localStorage.setItem("Ripples_colsettings", JSON.stringify(settings));
         
