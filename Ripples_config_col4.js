@@ -25,6 +25,13 @@ function setCheckedValue(radioObj, newValue) {
 	}
 }
 
+function getRipples() {
+	var params = {};
+	$('#BGSelection').serializeArray().forEach(function(pair) {
+		params[pair.name] = pair.value;
+	});
+	return params.background;
+}
 
 function changeColor(picker_id, color) {
     var hcolor = color.toHex();
@@ -67,7 +74,8 @@ $(document).ready(function () {
             alert('Please select different colors for time and background');
             return
         }
-
+        settings.background = getRipples();
+        
         localStorage.setItem("Ripples_colsettings", JSON.stringify(settings));
         
         var location = (decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#") + encodeURIComponent(JSON.stringify(settings));
