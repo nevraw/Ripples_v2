@@ -10,6 +10,41 @@ function getURLVariable(name) {
     else return results[1];
 }
 
+function getCheckedValue(radioObj) {
+	console.log('in getCheckedValue() (HTML)');
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}
+
+function setCheckedValue(radioObj, newValue) {
+	var radioLength = radioObj.length;
+	if(radioLength == undefined) {
+		console.log('radioLength == undefined');
+		radioObj.checked = (radioObj.value == newValue.toString());
+		return;
+	}
+	for(var i = 0; i < radioLength; i++) {
+		radioObj[i].checked = false;
+		if(radioObj[i].value == newValue.toString()) {
+			radioObj[i].checked = true;
+		}
+	}
+}
+
+
+
 function changeColor(picker_id, color) {
     var hcolor = color.toHex();
     var gcolor = GColor.fromHex(hcolor);
@@ -100,7 +135,10 @@ $(document).ready(function () {
     }
 
 
-    $(":radio[value=" + settings.background + "]").attr('checked', true);
+	setCheckedValue(document.table['tblBGSelection'].elements['background'], settings.background);
+
+//    $(":radio[value=" + settings.background + "]").attr('checked', true);
+//    $(".background").css("color", '#' + GColor.toHex(settings.timecolor));
 
     $(".number").css("color", '#' + GColor.toHex(settings.timecolor));
     $("#timecolor").spectrum("set", '#' + GColor.toHex(settings.timecolor));
@@ -110,6 +148,11 @@ $(document).ready(function () {
 
     $(".ripples").css("ripplescolor", '#' + GColor.toHex(settings.ripplescolor));
     $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
+
+
+
+
+
 
 
     $('#tblColorSelection').show();
