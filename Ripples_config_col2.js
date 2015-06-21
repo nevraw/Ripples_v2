@@ -23,6 +23,10 @@ function changeColor(picker_id, color) {
             settings.timecolor = gcolor;
             $(".number").css("color", '#' + hcolor);
             break;
+        case 'ripplescolor':
+            settings.ripplescolor = gcolor;
+            $(".ripples").css("ripplescolor", '#' + hcolor);
+            break;
 
     }
 
@@ -48,7 +52,7 @@ $(document).ready(function () {
             return
         }
 
-        localStorage.setItem("colsettings", JSON.stringify(settings));
+        localStorage.setItem("Ripplescolsettings", JSON.stringify(settings));
         
         var location = (decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#") + encodeURIComponent(JSON.stringify(settings));
         document.location = location;
@@ -76,7 +80,7 @@ $(document).ready(function () {
     });
 
     try {
-        settings = JSON.parse(localStorage.getItem("colsettings"));
+        settings = JSON.parse(localStorage.getItem("Ripplescolsettings"));
     }
     catch(err) {
         settings = null;
@@ -88,6 +92,7 @@ $(document).ready(function () {
       
         settings.bgcolor = GColor.fromHex("000000");
         settings.timecolor = GColor.fromHex("00FFFF");
+        settings.ripplestimecolor = GColor.fromHex("00FFFF");
     }
 
 
@@ -98,6 +103,9 @@ $(document).ready(function () {
 
     $(".screen").css("background-color", '#' + GColor.toHex(settings.bgcolor));
     $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
+
+    $(".ripples").css("ripplescolor", '#' + GColor.toHex(settings.ripplescolor));
+    $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
 
 
     $('#tblColorSelection').show();
