@@ -127,7 +127,7 @@ $(document).ready(function () {
     $(".ripples").css("ripplescolor", '#' + GColor.toHex(settings.ripplescolor));
     $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
 
-//    setCheckedValue(document.table['tblBGSelection'].elements['background'], settings.background);
+    setCheckedValue(document.table['tblBGSelection'].elements['background'], settings.background);
 
 
 
