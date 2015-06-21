@@ -10,6 +10,24 @@ function getURLVariable(name) {
     else return results[1];
 }
 
+function getCheckedValue(radioObj) {
+	console.log('in getCheckedValue() (HTML)');
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}
+
 function setCheckedValue(radioObj, newValue) {
 	var radioLength = radioObj.length;
 	if(radioLength == undefined) {
@@ -24,7 +42,6 @@ function setCheckedValue(radioObj, newValue) {
 		}
 	}
 }
-
 
 function changeColor(picker_id, color) {
     var hcolor = color.toHex();
@@ -43,7 +60,6 @@ function changeColor(picker_id, color) {
             settings.ripplescolor = gcolor;
             $(".ripples").css("ripplescolor", '#' + hcolor);
             break;
-
     }
 
 }
@@ -67,6 +83,8 @@ $(document).ready(function () {
             alert('Please select different colors for time and background');
             return
         }
+
+        settings.background = getCheckedValue(document.form['BGSelection'].elements['background']);
 
         localStorage.setItem("Ripples_colsettings", JSON.stringify(settings));
         
@@ -128,11 +146,6 @@ $(document).ready(function () {
     $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
 
     setCheckedValue(document.form['BGSelection'].elements['background'], settings.background);
-
-
-
-
-
 
 
     $('#tblColorSelection').show();
