@@ -23,6 +23,10 @@ function changeColor(picker_id, color) {
             settings.timecolor = gcolor;
             $(".number").css("color", '#' + hcolor);
             break;
+        case 'ripplescolor':
+            settings.ripplescolor = gcolor;
+            $(".ripples").css("ripples-color", '#' + hcolor);
+            break;
 
     }
 
@@ -48,6 +52,10 @@ $(document).ready(function () {
             return
         }
 
+        if (settings.background == false && settings.bgcolor == settings.ripplescolor) {
+            alert('Please select different colors for background ripples and background');
+            return
+        }
 
         localStorage.setItem("Ripples_colsettings", JSON.stringify(settings));
 
@@ -111,6 +119,7 @@ $(document).ready(function () {
     $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
 
     $(".ripples").css("ripples-color", '#' + GColor.toHex(settings.ripplescolor));
+    $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
 
     $('#tblColorSelection').show();
     $('#ptblColorSelection').show();
