@@ -58,7 +58,7 @@ $(document).ready(function () {
         }
 
         localStorage.setItem("Ripples_colsettings", JSON.stringify(settings));
-        
+
         var location = (decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#") + encodeURIComponent(JSON.stringify(settings));
         document.location = location;
 
@@ -94,7 +94,7 @@ $(document).ready(function () {
 
     if(settings==null) {
         settings = {};
-
+      
         settings.invert = false;
         settings.background = false;
         settings.hour_24 = false;
@@ -103,6 +103,12 @@ $(document).ready(function () {
         settings.timecolor = GColor.fromHex("00FFFF");
         settings.ripplescolor = GColor.fromHex(0x55AA55");
     }
+
+    $(".number").css("color", '#' + GColor.toHex(settings.timecolor));
+    $("#timecolor").spectrum("set", '#' + GColor.toHex(settings.timecolor));
+
+    $(".screen").css("background-color", '#' + GColor.toHex(settings.bgcolor));
+    $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
 
     $(":radio[value=" + settings.background + "]").attr('checked', true);
 
@@ -114,7 +120,6 @@ $(document).ready(function () {
 
     $(".ripples").css("ripples-color", '#' + GColor.toHex(settings.ripplescolor));
     $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
-
 
     $('#tblColorSelection').show();
     $('#ptblColorSelection').show();
