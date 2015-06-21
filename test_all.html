@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Ripples Config</title>
+    <link type="text/css" rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link type="text/css" rel="stylesheet" href="Ripples_config.css" />
+    <link type="text/css" rel="stylesheet" href="spectrum.css" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="spectrum.js"></script>
+    <script type="text/javascript" src="gcolor.js"></script>
+    <script type="text/javascript" src="Ripples_config_col2.js"></script>
+</head>
+<body style="position:relative; left:5px;">
+	<header>
+		<h1>Ripples settings (col test)</h1>
+	</header>
+ 
+    <p id="ptblColorSelection" style="display:none">
+        <span class="label">Select colors</span>
+    </p>
+    <table id="tblColorSelection" style="display:none">
+        <tr>
+            <td><label><input name="bgcolor" id="bgcolor" class="picker">&nbsp;Background&nbsp;</label></td>
+            <td><label><input name="timecolor" id="timecolor" class="picker">&nbsp;Time&nbsp;</label></td>
+            <td><label><input name="ripplescolor" id="ripplescolor" class="picker">&nbsp;Ripples (if enabled)</label></td>
+        </tr>
+    </table>
+       <br>
+       <br>
+
+    <form id="BGSelection" role="form" class="input-lg">
+        <span class="label">Select display of background ripples</span>
+ 	    <div class="radio";padding: 30px 12px;vertical align>
+	        <label><input type="radio" name="background" value="off" checked>&nbsp;&nbsp;Show ripples&nbsp;</label>
+	        <label><input type="radio" name="background" value="on">&nbsp;&nbsp;Remove ripples</label> 
+	    </div>
+    </form>
+       <br>
+
+    <div id="main" style="display:none">
+        <form method="post" target="_top" >
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="ZT2CBJ5JNMTYA">
+            <br />
+
+            <input id="xbtnSave" type="button" value="Save" style="margin-right:30px">
+            <input id="xbtnCancel" type="button" value="Cancel" style="margin-right:30px">
+        </form>
+    </div>
+
+</body>
+</html>
