@@ -48,10 +48,6 @@ $(document).ready(function () {
             return
         }
 
-        if (settings.background == false && settings.bgcolor == settings.ripplescolor) {
-            alert('Please select different colors for background ripples and background');
-            return
-        }
 
         localStorage.setItem("Ripples_colsettings", JSON.stringify(settings));
 
