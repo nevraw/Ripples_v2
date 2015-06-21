@@ -23,10 +23,6 @@ function changeColor(picker_id, color) {
             settings.timecolor = gcolor;
             $(".number").css("color", '#' + hcolor);
             break;
-        case 'ripplescolor':
-            settings.ripplescolor = gcolor;
-            $(".ripples").css("ripples-color", '#' + hcolor);
-            break;
 
     }
 
@@ -119,7 +115,6 @@ $(document).ready(function () {
     $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
 
     $(".ripples").css("ripples-color", '#' + GColor.toHex(settings.ripplescolor));
-    $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
 
     $('#tblColorSelection').show();
     $('#ptblColorSelection').show();
@@ -141,3 +136,11 @@ $(document).ready(function () {
     $('#main').show();
 
 });
+/*
+        case 'ripplescolor':
+            settings.ripplescolor = gcolor;
+            $(".ripples").css("ripples-color", '#' + hcolor);
+            break;
+
+    $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
+*/
