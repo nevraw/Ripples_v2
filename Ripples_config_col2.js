@@ -135,8 +135,6 @@ $(document).ready(function () {
     }
 
 
-	setCheckedValue(document.table['tblBGSelection'].elements['background'], settings.background);
-
 //    $(":radio[value=" + settings.background + "]").attr('checked', true);
 //    $(".background").css("color", '#' + GColor.toHex(settings.timecolor));
 
@@ -148,6 +146,8 @@ $(document).ready(function () {
 
     $(".ripples").css("ripplescolor", '#' + GColor.toHex(settings.ripplescolor));
     $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
+
+    setCheckedValue(document.table['tblBGSelection'].elements['background'], settings.background);
 
 
 
