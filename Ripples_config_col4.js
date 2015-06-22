@@ -134,7 +134,7 @@ $(document).ready(function () {
     }
 
 
-//    $(":radio[value=" + settings.background + "]").attr('checked', true);
+    $(":radio[value=" + settings.background + "]").attr('checked', true);
 
     $(".number").css("color", '#' + GColor.toHex(settings.timecolor));
     $("#timecolor").spectrum("set", '#' + GColor.toHex(settings.timecolor));
@@ -145,7 +145,7 @@ $(document).ready(function () {
     $(".ripples").css("ripplescolor", '#' + GColor.toHex(settings.ripplescolor));
     $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
 
-    setRipples(settings.background);
+//    setRipples(settings.background);
 
     $('#tblColorSelection').show();
     $('#ptblColorSelection').show();
