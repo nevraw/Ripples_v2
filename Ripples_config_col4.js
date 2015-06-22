@@ -134,7 +134,7 @@ $(document).ready(function () {
     }
 
 
-    $(":radio[value=" + settings.background + "]").attr('checked', true);
+//    $(":radio[value=" + settings.background + "]").attr('checked', true);
 
     $(".number").css("color", '#' + GColor.toHex(settings.timecolor));
     $("#timecolor").spectrum("set", '#' + GColor.toHex(settings.timecolor));
