@@ -76,7 +76,7 @@ $(document).ready(function () {
         }
         settings.background = getRipples();
         
-        localStorage.setItem("Ripples_colsettings", JSON.stringify(settings));
+        localStorage.setItem("Ripples_settings_col", JSON.stringify(settings));
         
         var location = (decodeURIComponent(getURLVariable('return_to')) || "pebblejs://close#") + encodeURIComponent(JSON.stringify(settings));
         document.location = location;
@@ -104,7 +104,7 @@ $(document).ready(function () {
     });
 
     try {
-        settings = JSON.parse(localStorage.getItem("Ripples_colsettings"));
+        settings = JSON.parse(localStorage.getItem("Ripples_settings_col"));
     }
     catch(err) {
         settings = null;
@@ -119,8 +119,8 @@ $(document).ready(function () {
         settings.hour_24 = false;
 
         settings.bgcolor = GColor.fromHex("000000");
-        settings.timecolor = GColor.fromHex("00FFFF");
-        settings.ripplestimecolor = GColor.fromHex("00FFFF");
+        settings.timecolor = GColor.fromHex("FFFFFF");
+        settings.ripplescolor = GColor.fromHex("FFFFFF");
     }
 
 
