@@ -27,7 +27,7 @@ function setCheckedValue(radioObj, newValue) {
 
 function getRipples() {
 	var params = {};
-	$('#BGSelection').serializeArray().forEach(function(pair) {
+	$('#options').serializeArray().forEach(function(pair) {
 		params[pair.name] = pair.value;
 	});
 	return (params.background === 'on');
@@ -35,7 +35,7 @@ function getRipples() {
 
 function setRipples(background_setting) {
 	if (background_setting) {
-		setCheckedValue(document.form['tblBGSelection'].elements['background'], 'on');
+		setCheckedValue(document.form['options'].elements['background'], 'on');
 	}
 }
 
