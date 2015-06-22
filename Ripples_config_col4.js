@@ -148,7 +148,7 @@ $(document).ready(function () {
     $('#tblColorSelection').show();
     $('#ptblColorSelection').show();
 
-    setRipples(settings.background);
+//    setRipples(settings.background);
 
     $('.number').css({
         top:'-290px',
