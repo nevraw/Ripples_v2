@@ -30,7 +30,7 @@ function getRipples() {
 	$('#BGSelection').serializeArray().forEach(function(pair) {
 		params[pair.name] = pair.value;
 	});
-	return params.background;
+	return (params.background === 'on');
 }
 
 function changeColor(picker_id, color) {
