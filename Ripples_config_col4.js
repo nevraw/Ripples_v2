@@ -33,6 +33,12 @@ function getRipples() {
 	return (params.background === 'on');
 }
 
+function setRipples(background_setting) {
+	if (background_setting) {
+		setCheckedValue(document.form['tblBGSelection'].elements['background'], 'on');
+	}
+}
+
 function changeColor(picker_id, color) {
     var hcolor = color.toHex();
     var gcolor = GColor.fromHex(hcolor);
@@ -72,6 +78,10 @@ $(document).ready(function () {
 
         if (settings.bgcolor == settings.timecolor) {
             alert('Please select different colors for time and background');
+            return
+        }
+        if (settings.bgcolor == settings.ripplescolor) {
+            alert('Please select different colors for ripplestime and background - to hide ripples use button below');
             return
         }
         settings.background = getRipples();
@@ -135,13 +145,7 @@ $(document).ready(function () {
     $(".ripples").css("ripplescolor", '#' + GColor.toHex(settings.ripplescolor));
     $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
 
-//    setCheckedValue(document.form['tblBGSelection'].elements['background'], settings.background);
-
-
-
-
-
-
+    setRipples(settings.background);
 
     $('#tblColorSelection').show();
     $('#ptblColorSelection').show();
