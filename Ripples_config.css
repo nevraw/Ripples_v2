@@ -11,7 +11,7 @@
 }
 
 #tblDir {
-            width: 405px;
+            width: 305px;
             height: 325px;  
             position:relative;    
             z-index:1000;
@@ -19,7 +19,7 @@
         }
 
         #tblDir td {
-            width:200px;
+            width:300px;
             text-align:center;
             opacity: 1;
         }
