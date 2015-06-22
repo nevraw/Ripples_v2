@@ -145,7 +145,7 @@ $(document).ready(function () {
     $(".ripples").css("ripplescolor", '#' + GColor.toHex(settings.ripplescolor));
     $("#ripplescolor").spectrum("set", '#' + GColor.toHex(settings.ripplescolor));
 
-//    setRipples(settings.background);
+    setRipples(settings.background);
 
     $('#tblColorSelection').show();
     $('#ptblColorSelection').show();
