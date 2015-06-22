@@ -12,33 +12,35 @@
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="spectrum.js"></script>
     <script type="text/javascript" src="gcolor.js"></script>
-    <script type="text/javascript" src="Ripples_config_col.js"></script>
+    <script type="text/javascript" src="Ripples_config_col4.js"></script>
 </head>
 <body style="position:relative; left:5px;">
 	<header>
-		<h1>Ripples settings (v2)</h1>
+		<h1>Ripples settings (col test)</h1>
 	</header>
  
-    <table id="tblBGSelection" style="display:none">
-        <span class="label">Select Background Ripples</span>
+    <p id="ptblColorSelection" style="display:none">
+        <span class="label">Select colors</span>
+    </p>
+    <table id="tblColorSelection" style="display:none">
         <tr>
- 		<div class="radio";padding: 30px 12px;vertical align>
-	  		  <label><input type="radio" name="background" value="off" checked>&nbsp;&nbsp;Show ripples</label>
-	  		  <label><input type="radio" name="background" value="on">&nbsp;&nbsp;Remove ripples</label> 
-	      	</div>
+            <td><label><input name="bgcolor" id="bgcolor" class="picker">&nbsp;Background</label></td>
+            <td><label><input name="timecolor" id="timecolor" class="picker">&nbsp;Time&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+            <td><label><input name="ripplescolor" id="ripplescolor" class="picker">&nbsp;Ripples&nbsp;</label></td>
         </tr>
     </table>
        <br>
-       
-    <table id="tblColorSelection" style="display:none">
-        <span class="label">Select Colors</span>
-        <tr>
-            <td><label><input name="bgcolor" id="bgcolor" class="picker">&nbsp;Background&nbsp;</label></td>
-            <td><label><input name="timecolor" id="timecolor" class="picker">&nbsp;Time&nbsp;</label></td>
-        </tr>
-    </table>
-	<br>
-	
+       <br>
+
+    <form id="options" role="form" class="input-lg">
+        <span class="label">Select display of background ripples</span>
+ 	    <div class="radio";padding: 30px 12px; align>
+	        <label><input type="radio" name="background" value="off" checked>&nbsp;Show ripples&nbsp;</label>
+	        <label><input type="radio" name="background" value="on">&nbsp;Remove ripples</label> 
+	    </div>
+    </form>
+       <br>
+
     <div id="main" style="display:none">
         <form method="post" target="_top" >
             <input type="hidden" name="cmd" value="_s-xclick">
